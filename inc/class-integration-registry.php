@@ -64,10 +64,10 @@ final class Integration_Registry {
 					wp_enqueue_style(
 						'brainerd-int-' . $slug,
 						$css_url,
-						[],
-						BRAINERD_COMPANION_URL
+						[ 'gform_theme' ],
+						'0.1.0-alpha'
 					);
-				} );
+				}, 50 );
 			}
 
 			if ( is_callable( $int['init'] ) ) {
