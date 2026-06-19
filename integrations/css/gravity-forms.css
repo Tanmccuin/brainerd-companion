@@ -1,0 +1,188 @@
+/**
+ * Gravity Forms — Brainerd theme override.
+ *
+ * Maps GF's CSS custom properties to our --tmd-* design tokens.
+ * Handles both light and dark mode via .tmd-dark overrides.
+ * Loaded conditionally only when GF is active.
+ */
+
+/* ─── Root variable remapping ──────────────────────────────────────────────── */
+:root {
+	--gf-color-primary: var(--tmd-accent);
+	--gf-color-primary-rgb: 232, 77, 34;
+	--gf-color-primary-contrast: #ffffff;
+	--gf-color-primary-darker: var(--tmd-accent-dark);
+	--gf-color-primary-lighter: var(--tmd-accent);
+
+	--gf-color-secondary: var(--tmd-heading);
+	--gf-color-secondary-contrast: var(--tmd-bg);
+
+	--gf-color-danger: #c93d16;
+	--gf-color-danger-contrast: #ffffff;
+
+	--gf-color-out-ctrl-light: var(--tmd-bg);
+	--gf-color-out-ctrl-light-darker: var(--tmd-border);
+	--gf-color-out-ctrl-light-lighter: var(--tmd-surf);
+	--gf-color-out-ctrl-dark: var(--tmd-heading);
+	--gf-color-out-ctrl-dark-darker: var(--tmd-heading);
+	--gf-color-out-ctrl-dark-lighter: var(--tmd-body);
+
+	--gf-color-in-ctrl: var(--tmd-surf);
+	--gf-color-in-ctrl-contrast: var(--tmd-heading);
+	--gf-color-in-ctrl-dark: var(--tmd-heading);
+	--gf-color-in-ctrl-dark-darker: var(--tmd-heading);
+	--gf-color-in-ctrl-dark-lighter: var(--tmd-body);
+	--gf-color-in-ctrl-light: var(--tmd-surf);
+	--gf-color-in-ctrl-light-darker: var(--tmd-border);
+	--gf-color-in-ctrl-light-lighter: var(--tmd-bg);
+	--gf-color-in-ctrl-primary: var(--tmd-accent);
+	--gf-color-in-ctrl-primary-contrast: #ffffff;
+
+	--gf-ctrl-border-color: var(--tmd-border);
+	--gf-ctrl-border-color-focus: var(--tmd-accent);
+	--gf-ctrl-border-color-hover: var(--tmd-muted);
+	--gf-ctrl-border-color-error: var(--gf-color-danger);
+	--gf-ctrl-border-width: 1px;
+	--gf-ctrl-border-style: solid;
+	--gf-ctrl-bg-color: var(--tmd-surf);
+	--gf-ctrl-bg-color-focus: var(--tmd-surf);
+
+	--gf-ctrl-radius: var(--tmd-radius-sm);
+
+	--gf-label-font-family: 'Inter', sans-serif;
+	--gf-label-font-weight: 500;
+	--gf-label-font-size: 0.8125rem;
+	--gf-label-letter-spacing: 0.04em;
+	--gf-label-text-transform: uppercase;
+	--gf-label-color: var(--tmd-body);
+
+	--gf-desc-font-size: 0.75rem;
+	--gf-desc-color: var(--tmd-muted);
+
+	--gf-input-font-family: 'Inter', sans-serif;
+	--gf-input-font-size: 0.9375rem;
+	--gf-input-color: var(--tmd-heading);
+
+	--gf-ctrl-btn-bg-color-primary: var(--tmd-accent);
+	--gf-ctrl-btn-bg-color-hover-primary: var(--tmd-accent-dark);
+	--gf-ctrl-btn-bg-color-focus-primary: var(--tmd-accent-dark);
+	--gf-ctrl-btn-color-primary: #ffffff;
+	--gf-ctrl-btn-color-hover-primary: #ffffff;
+	--gf-ctrl-btn-border-color-primary: var(--tmd-accent);
+	--gf-ctrl-btn-radius: var(--tmd-radius-sm);
+	--gf-ctrl-btn-font-family: 'Inter', sans-serif;
+	--gf-ctrl-btn-font-weight: 500;
+	--gf-ctrl-btn-font-size: 0.875rem;
+}
+
+/* ─── Typography refinements ───────────────────────────────────────────────── */
+.gform_wrapper .gfield_label {
+	font-family: 'Inter', sans-serif;
+	font-weight: 500;
+	font-size: 0.8125rem;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: var(--tmd-body);
+}
+
+.gform_wrapper .gfield_description {
+	font-size: 0.75rem;
+	color: var(--tmd-muted);
+}
+
+.gform_wrapper .gfield_required {
+	color: var(--tmd-accent);
+}
+
+/* ─── Inputs ───────────────────────────────────────────────────────────────── */
+.gform_wrapper input[type="text"],
+.gform_wrapper input[type="email"],
+.gform_wrapper input[type="tel"],
+.gform_wrapper input[type="url"],
+.gform_wrapper input[type="number"],
+.gform_wrapper input[type="date"],
+.gform_wrapper select,
+.gform_wrapper textarea {
+	background: var(--tmd-surf);
+	border: 1px solid var(--tmd-border);
+	border-radius: var(--tmd-radius-sm);
+	color: var(--tmd-heading);
+	font-family: 'Inter', sans-serif;
+	font-size: 0.9375rem;
+	padding: 0.75rem 1rem;
+	transition: border-color var(--tmd-transition), box-shadow var(--tmd-transition);
+}
+
+.gform_wrapper input:focus,
+.gform_wrapper select:focus,
+.gform_wrapper textarea:focus {
+	border-color: var(--tmd-accent);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--tmd-accent) 20%, transparent);
+	outline: none;
+}
+
+/* ─── Submit button ────────────────────────────────────────────────────────── */
+.gform_wrapper .gform_button,
+.gform_wrapper input[type="submit"] {
+	background-color: var(--tmd-accent);
+	color: #ffffff;
+	border: none;
+	border-radius: var(--tmd-radius-sm);
+	font-family: 'Inter', sans-serif;
+	font-size: 0.9375rem;
+	font-weight: 500;
+	padding: 0.75rem 1.75rem;
+	cursor: pointer;
+	transition: background-color var(--tmd-transition);
+}
+
+.gform_wrapper .gform_button:hover,
+.gform_wrapper input[type="submit"]:hover {
+	background-color: var(--tmd-accent-dark);
+}
+
+.gform_wrapper .gform_button:focus-visible,
+.gform_wrapper input[type="submit"]:focus-visible {
+	outline: 2px solid var(--tmd-accent);
+	outline-offset: 3px;
+}
+
+/* ─── Validation ───────────────────────────────────────────────────────────── */
+.gform_wrapper .gfield_error input,
+.gform_wrapper .gfield_error select,
+.gform_wrapper .gfield_error textarea {
+	border-color: var(--gf-color-danger);
+}
+
+.gform_wrapper .gfield_error .gfield_label {
+	color: var(--gf-color-danger);
+}
+
+.gform_wrapper .validation_message {
+	color: var(--gf-color-danger);
+	font-size: 0.75rem;
+}
+
+.gform_wrapper .gform_confirmation_message {
+	background: color-mix(in srgb, var(--tmd-accent) 8%, transparent);
+	border: 1px solid color-mix(in srgb, var(--tmd-accent) 25%, transparent);
+	border-radius: var(--tmd-radius-md);
+	padding: 1.25rem 1.5rem;
+	color: var(--tmd-heading);
+	font-size: 0.9375rem;
+}
+
+/* ─── Spacing ──────────────────────────────────────────────────────────────── */
+.gform_wrapper .gform_fields {
+	gap: 1.5rem;
+}
+
+/* ─── Reduced motion ───────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+	.gform_wrapper input,
+	.gform_wrapper select,
+	.gform_wrapper textarea,
+	.gform_wrapper .gform_button {
+		transition: none;
+	}
+}
