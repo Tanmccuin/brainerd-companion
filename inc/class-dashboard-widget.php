@@ -88,7 +88,7 @@ final class Dashboard_Widget {
 			echo '</tbody></table>';
 		}
 
-		echo '<p style="margin-top:16px;"><a href="' . esc_url( admin_url( 'options-general.php?page=brainerd-companion' ) ) . '">Manage integrations &rarr;</a></p>';
+		echo '<p style="margin-top:16px;"><a href="' . esc_url( admin_url( 'admin.php?page=brainerd-integrations' ) ) . '">Manage integrations &rarr;</a></p>';
 
 		echo '</div>';
 	}

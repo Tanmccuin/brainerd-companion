@@ -9,11 +9,16 @@ namespace Brainerd;
 final class Settings {
 
 	public static function register(): void {
-		add_options_page(
-			'Brainerd Companion',
-			'Br<span style="color:#e84d22;">ai</span>nerd',
+		self::register_submenu();
+	}
+
+	public static function register_submenu(): void {
+		add_submenu_page(
+			'brainerd',
+			'Integrations',
+			'Integrations',
 			'manage_options',
-			'brainerd-companion',
+			'brainerd-integrations',
 			[ self::class, 'render' ]
 		);
 	}

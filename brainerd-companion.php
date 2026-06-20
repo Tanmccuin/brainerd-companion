@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       Brainerd Companion
- * Description:       Plugin detection, style overrides, and dashboard for the Brainerd theme ecosystem.
+ * Description:       Plugin detection, style overrides, config system, and dashboard for the Brainerd theme ecosystem.
  * Version:           0.1.0-alpha
  * Requires PHP:      8.0
  * Requires at least: 6.4
@@ -19,6 +19,23 @@ define( 'BRAINERD_COMPANION_URL', plugin_dir_url( __FILE__ ) );
 require_once BRAINERD_COMPANION_DIR . 'inc/class-integration-registry.php';
 require_once BRAINERD_COMPANION_DIR . 'inc/class-dashboard-widget.php';
 require_once BRAINERD_COMPANION_DIR . 'inc/class-settings.php';
+require_once BRAINERD_COMPANION_DIR . 'inc/class-config.php';
+require_once BRAINERD_COMPANION_DIR . 'inc/class-config-admin.php';
+
+/**
+ * Template helper — retrieve a config value.
+ *
+ * Usage in templates:
+ *   brainerd_config( 'phone' )
+ *   brainerd_config( 'cta_text', 'GET IN TOUCH' )
+ *
+ * @param string $key      Config key.
+ * @param mixed  $fallback Fallback value.
+ * @return mixed
+ */
+function brainerd_config( string $key, $fallback = '' ) {
+	return Brainerd\Config::instance()->get( $key, $fallback );
+}
 
 /**
  * Boot the companion plugin.
@@ -41,7 +58,8 @@ add_action( 'wp_dashboard_setup', function (): void {
 } );
 
 add_action( 'admin_menu', function (): void {
-	Brainerd\Settings::register();
+	Brainerd\Config_Admin::register();
+	Brainerd\Settings::register_submenu();
 } );
 
 add_action( 'admin_init', function (): void {
